@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DinnersDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dishes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IngredientsList" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Cost" Type="float" />
+  </EntityType>
+  <EntityType Name="DishesTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ingredients">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="Category" Type="int" Nullable="false" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Availability" Type="bit" />
+  </EntityType>
+  <EntityType Name="IngredientsCategories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Category_Name" Type="nchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IngredionsOnPositions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="PositionInDishID" Type="int" Nullable="false" />
+    <Property Name="IngredientID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PositionsInDish">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="DishID" Type="int" Nullable="false" />
+    <Property Name="PositionID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Categories_Ingredients">
+    <End Role="IngredientsCategories" Type="Self.IngredientsCategories" Multiplicity="1" />
+    <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IngredientsCategories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ingredients">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dishes_DishesTypes">
+    <End Role="DishesTypes" Type="Self.DishesTypes" Multiplicity="1" />
+    <End Role="Dishes" Type="Self.Dishes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DishesTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Dishes">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IngredionsOnPositions_Ingredients">
+    <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+    <End Role="IngredionsOnPositions" Type="Self.IngredionsOnPositions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IngredionsOnPositions">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IngredionsOnPositions_PositionsInDish">
+    <End Role="PositionsInDish" Type="Self.PositionsInDish" Multiplicity="1" />
+    <End Role="IngredionsOnPositions" Type="Self.IngredionsOnPositions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PositionsInDish">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="IngredionsOnPositions">
+        <PropertyRef Name="PositionInDishID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PositionsInDish_Dishes">
+    <End Role="Dishes" Type="Self.Dishes" Multiplicity="1" />
+    <End Role="PositionsInDish" Type="Self.PositionsInDish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dishes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PositionsInDish">
+        <PropertyRef Name="DishID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PositionsInDish_Positions">
+    <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+    <End Role="PositionsInDish" Type="Self.PositionsInDish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Positions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PositionsInDish">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище DinnersDBModelContainer">
+    <EntitySet Name="Dishes" EntityType="Self.Dishes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DishesTypes" EntityType="Self.DishesTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingredients" EntityType="Self.Ingredients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IngredientsCategories" EntityType="Self.IngredientsCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IngredionsOnPositions" EntityType="Self.IngredionsOnPositions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PositionsInDish" EntityType="Self.PositionsInDish" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Categories_Ingredients" Association="Self.FK_Categories_Ingredients">
+      <End Role="IngredientsCategories" EntitySet="IngredientsCategories" />
+      <End Role="Ingredients" EntitySet="Ingredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dishes_DishesTypes" Association="Self.FK_Dishes_DishesTypes">
+      <End Role="DishesTypes" EntitySet="DishesTypes" />
+      <End Role="Dishes" EntitySet="Dishes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IngredionsOnPositions_Ingredients" Association="Self.FK_IngredionsOnPositions_Ingredients">
+      <End Role="Ingredients" EntitySet="Ingredients" />
+      <End Role="IngredionsOnPositions" EntitySet="IngredionsOnPositions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IngredionsOnPositions_PositionsInDish" Association="Self.FK_IngredionsOnPositions_PositionsInDish">
+      <End Role="PositionsInDish" EntitySet="PositionsInDish" />
+      <End Role="IngredionsOnPositions" EntitySet="IngredionsOnPositions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PositionsInDish_Dishes" Association="Self.FK_PositionsInDish_Dishes">
+      <End Role="Dishes" EntitySet="Dishes" />
+      <End Role="PositionsInDish" EntitySet="PositionsInDish" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PositionsInDish_Positions" Association="Self.FK_PositionsInDish_Positions">
+      <End Role="Positions" EntitySet="Positions" />
+      <End Role="PositionsInDish" EntitySet="PositionsInDish" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

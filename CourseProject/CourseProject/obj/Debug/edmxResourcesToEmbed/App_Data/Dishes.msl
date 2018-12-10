@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DinnersDBModelContainer" CdmEntityContainer="DinnersDBEntities">
+    <EntitySetMapping Name="Dishes">
+      <EntityTypeMapping TypeName="DinnersDBModel.Dishes">
+        <MappingFragment StoreEntitySet="Dishes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IngredientsList" ColumnName="IngredientsList" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DishesTypes">
+      <EntityTypeMapping TypeName="DinnersDBModel.DishesTypes">
+        <MappingFragment StoreEntitySet="DishesTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ingredients">
+      <EntityTypeMapping TypeName="DinnersDBModel.Ingredients">
+        <MappingFragment StoreEntitySet="Ingredients">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Availability" ColumnName="Availability" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IngredientsCategories">
+      <EntityTypeMapping TypeName="DinnersDBModel.IngredientsCategories">
+        <MappingFragment StoreEntitySet="IngredientsCategories">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IngredionsOnPositions">
+      <EntityTypeMapping TypeName="DinnersDBModel.IngredionsOnPositions">
+        <MappingFragment StoreEntitySet="IngredionsOnPositions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PositionInDishID" ColumnName="PositionInDishID" />
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="DinnersDBModel.Positions">
+        <MappingFragment StoreEntitySet="Positions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PositionsInDish">
+      <EntityTypeMapping TypeName="DinnersDBModel.PositionsInDish">
+        <MappingFragment StoreEntitySet="PositionsInDish">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DishID" ColumnName="DishID" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

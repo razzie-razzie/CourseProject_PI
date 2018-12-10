@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Главная";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1 class="index_header_text">Добро пожаловать!</h1>
+</div>
+<div class="jumbotron">
+    <p>
+        <table class="start_page_tbl">
+            <tr>
+                <td>
+                    <label>Ингредиенты</label>
+                </td>
+                <td>
+                    <label>Категории</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("Список ингредиентов", "Index", "Ingredients", null, new { @class = "button_start_page" })
+                    &nbsp;
+                    @Html.ActionLink("Добавить ингредиент", "Create", "Ingredients", null, new { @class = "button_start_page" })
+                </td>
+                <td>
+                    @Html.ActionLink("Список категорий", "Index", "IngredientsCategories", null, new { @class = "button_start_page" })
+                    &nbsp;
+                    @Html.ActionLink("Добавить категорию", "Create", "IngredientsCategories", null, new { @class = "button_start_page" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Блюда</label>
+                </td>
+                <td>
+                    <label>Типы блюд</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("Список блюд", "Index", "Dishes", null, new { @class = "button_start_page" })
+                    &nbsp;
+                    @Html.ActionLink("Добавить блюдо", "Create", "Dishes", null, new { @class = "button_start_page" })
+                </td>
+                <td>
+                    @Html.ActionLink("Список типов", "Index", "DishesTypes", null, new { @class = "button_start_page" })
+                    &nbsp;
+                    @Html.ActionLink("Добавить тип", "Create", "DishesTypes", null, new { @class = "button_start_page" })
+                </td>
+            </tr>
+        </table>
+</div>

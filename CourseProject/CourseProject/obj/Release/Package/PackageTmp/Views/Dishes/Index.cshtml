@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CourseProject.Dish>
+
+@{
+    ViewBag.Title = "Список блюд";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page_header">Список блюд</h2>
+<br />
+<table class="my_table">
+    <tr class=".my_table .header-line">
+        <th>
+            @Html.DisplayName("Название")
+        </th>
+        <th>
+            @Html.DisplayName("Тип")
+        </th>
+        <th>
+            @Html.DisplayName("Вес")
+        </th>
+        <th>
+            @Html.DisplayName("Цена, р")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DishesType.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+
+            <td>
+                @Html.ActionLink("Просмотреть", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Назад", "Index", "Home")
+</div>

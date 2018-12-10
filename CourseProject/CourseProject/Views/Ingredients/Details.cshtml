@@ -1,0 +1,51 @@
+﻿@model CourseProject.Ingredient
+
+@{
+    ViewBag.Title = "Подробнее";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page_header">Подробнее о <span style="color: maroon; text-decoration: underline;">@Html.DisplayFor(model => model.Name)</span></h2>
+
+<div>
+    <p>
+        @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Назад", "Index")
+    </p>
+    <hr />
+    <dl class="details_style">
+        <dt>
+            @Html.DisplayName("Название")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Вес")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+            @Html.Label(", г")
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Наличие")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Availability)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Категория")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IngredientsCategory.Category_Name)
+        </dd>
+
+    </dl>
+</div>
+

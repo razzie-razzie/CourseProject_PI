@@ -1,0 +1,49 @@
+﻿@model CourseProject.Dish
+
+@{
+    ViewBag.Title = "Подробнее";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page_header">Подробнее о <span style="color: maroon; text-decoration: underline;">@Html.DisplayFor(model => model.Name)</span></h2>
+
+<div>
+    <p>
+        @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Назад", "Index")
+    </p>
+    <hr />
+    <dl class="details_style">
+        <dt>
+            @Html.DisplayName("Название")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Цена")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Название")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DishesType.Type)
+        </dd>
+        <dt>
+            @Html.DisplayName("Позиция|Ингредиент")
+        </dt>
+
+        <dd>
+            @Html.Display("Position")|
+            @Html.Display("Ingredient")
+        </dd>
+    </dl>
+</div>

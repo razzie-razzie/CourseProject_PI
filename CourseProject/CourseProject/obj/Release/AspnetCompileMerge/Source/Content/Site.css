@@ -1,0 +1,160 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Century Gothic';
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.page_header {
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #243425;
+    text-shadow: 5px 5px 2px #b5b4b4;
+}
+
+.index_header_text {
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    text-shadow: 8px 8px 2px #b5b4b4;
+}
+
+.my_table {
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    background: rgba(207, 203, 255, 0.5);
+    margin: 10px;
+}
+
+    .my_table th {
+        color: #d30000;
+        text-align: center;
+        border-bottom: 1px solid #808080;
+        padding: 12px 17px;
+        background: rgba(207, 203, 255, 0.8);
+        border-right: 1px solid #b5b4b4;
+    }
+
+    .my_table td {
+        color: black;
+        border-bottom: 1px solid #b5b4b4;
+        border-right: 1px solid #b5b4b4;
+        padding: 7px 17px;
+    }
+
+    .my_table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .my_table td:last-child {
+        border-right: none;
+    }
+
+    .my_table tr:hover td {
+        text-decoration: underline;
+        background-color: rgba(255, 136, 136, 0.40);
+    }
+
+    .my_table a {
+        color: maroon;
+        font-weight: 800;
+    }
+
+    .my_table .number {
+        text-align: center;
+    }
+
+.button_start_page {
+    display: inline-block;
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+    padding: .5em 2em;
+    outline: none;
+    border-width: 2px 0;
+    border-style: solid;
+    border-color: #FDBE33 #000 #D77206;
+    border-radius: 18px;
+    background: linear-gradient(#F3AE0F, #E38916) #E38916;
+}
+
+    .button_start_page:hover {
+        font-size: 16px;
+        text-decoration: none;
+        color: rgba(112, 16, 135, 0.57);
+        font-weight: 700;
+        background: linear-gradient(#f5ae00, #f59500) #f5ae00;
+        border-color: rgba(112, 16, 135, 0.57);
+        border-width: 2px;
+    }
+
+    .button_start_page:active {
+        background: linear-gradient(#f59500, #f5ae00) #f59500;
+    }
+
+.details_style {
+    font-size: 20px;
+
+}
+
+    .details_style dl {
+        border: 3px double #ccc;
+        padding: 15px;
+    }
+
+    .details_style dt {
+        float: left;
+        clear: left;
+        text-align: right;
+        font-weight: bold;
+        color: green;
+        text-shadow: 5px 5px 2px #b5b4b4;
+    }
+
+        .details_style dt::after {
+            content: ":";
+        }
+
+    .details_style dd {
+        margin: 0 0 0 200px;
+        padding: 0 0 15px 0;
+    }
+
+.start_page_tbl {
+    text-align: center;
+    width: 100%;
+}
+
+    .start_page_tbl td {
+        padding: 15px;
+    }
+
+    .start_page_tbl label {
+        font-size: 35px;
+        letter-spacing: 1px;
+        font-weight: 900;
+        color: #162e02;
+        text-shadow: 5px 5px 2px #b5b4b4;
+    }

@@ -1,0 +1,34 @@
+﻿@model CourseProject.DishesType
+
+@{
+    ViewBag.Title = "Удаление типа блюда";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page_header">Удаление типа блюда</h2>
+
+<h3>Вы уверены, что хотите удалить этот тип?</h3>
+<div>
+    <h4>DishesTypes</h4>
+    <hr />
+    <dl class="details_style">
+        <dt>
+            @Html.DisplayName("Тип блюда")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Да, удалить" class="btn btn-default" />
+            @Html.ActionLink("Нет, вернуться назад", "Index", "DishesTypes", htmlAttributes: new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

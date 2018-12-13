@@ -9,7 +9,9 @@
     <Property Name="Type" Type="Int32" Nullable="false" />
     <Property Name="Weight" Type="Double" />
     <Property Name="Cost" Type="Double" />
+    <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="DishesType" Relationship="Self.FK_Dishes_DishesTypes" FromRole="Dishes" ToRole="DishesTypes" />
+    <NavigationProperty Name="PositionsInDishes" Relationship="Self.FK_PositionsInDish_Dishes" FromRole="Dishes" ToRole="PositionsInDish" />
   </EntityType>
   <EntityType Name="DishesType">
     <Key>
@@ -64,6 +66,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DishID" Type="Int32" Nullable="false" />
     <Property Name="PositionID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Dish" Relationship="Self.FK_PositionsInDish_Dishes" FromRole="PositionsInDish" ToRole="Dishes" />
     <NavigationProperty Name="IngredientsOnPositions" Relationship="Self.FK_IngredientsOnPositions_PositionsInDish" FromRole="PositionsInDish" ToRole="IngredientsOnPositions" />
     <NavigationProperty Name="Position" Relationship="Self.FK_PositionsInDish_Positions" FromRole="PositionsInDish" ToRole="Positions" />
   </EntityType>
@@ -86,6 +89,18 @@
       </Principal>
       <Dependent Role="Dishes">
         <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PositionsInDish_Dishes">
+    <End Role="Dishes" Type="Self.Dish" Multiplicity="1" />
+    <End Role="PositionsInDish" Type="Self.PositionsInDish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dishes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PositionsInDish">
+        <PropertyRef Name="DishID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -137,7 +152,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="DinnersDBEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DinnersDBEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Dishes" EntityType="Self.Dish" />
     <EntitySet Name="DishesTypes" EntityType="Self.DishesType" />
     <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
@@ -149,6 +164,10 @@
     <AssociationSet Name="FK_Dishes_DishesTypes" Association="Self.FK_Dishes_DishesTypes">
       <End Role="DishesTypes" EntitySet="DishesTypes" />
       <End Role="Dishes" EntitySet="Dishes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PositionsInDish_Dishes" Association="Self.FK_PositionsInDish_Dishes">
+      <End Role="Dishes" EntitySet="Dishes" />
+      <End Role="PositionsInDish" EntitySet="PositionsInDishes" />
     </AssociationSet>
     <AssociationSet Name="FK_Categories_Ingredients" Association="Self.FK_Categories_Ingredients">
       <End Role="IngredientsCategories" EntitySet="IngredientsCategories" />

@@ -37,14 +37,14 @@
             <td class="number">
                 @Html.DisplayFor(modelItem => item.Weight)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.Availability)
             </td>
 
             <td>
-                @Html.ActionLink("Просмотреть", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+                @Html.ActionLink("Просмотреть", "Details", new { id = item.ID }, new { @class = "table_buttons" }) |
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }, new { @class = "table_buttons" }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID }, new { @class = "table_buttons" })
             </td>
         </tr>
     }

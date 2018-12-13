@@ -116,7 +116,7 @@ textarea {
 
 .details_style {
     font-size: 20px;
-
+    background-color: rgba(206, 235, 211, .5);
 }
 
     .details_style dl {
@@ -158,3 +158,34 @@ textarea {
         color: #162e02;
         text-shadow: 5px 5px 2px #b5b4b4;
     }
+
+.dish_img {
+    width: 300px;
+    height: auto;
+}
+
+.table_buttons:hover {
+    border: 1px solid rgb(101, 237, 209);
+    background: rgba(207, 203, 255, 0.8);
+    border-radius: 50px;
+}
+
+.details_tbl {
+}
+
+    .details_tbl img {
+        height: 300px;
+        width: auto;
+    }
+
+    .details_tbl td {
+        padding: 10px;
+    }
+
+.home_pos_lbl {
+    font-size: 35px;
+    letter-spacing: 1px;
+    font-weight: 900;
+    color: #162e02;
+    text-shadow: 5px 5px 2px #b5b4b4;
+}

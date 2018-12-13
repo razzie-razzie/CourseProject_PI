@@ -22,8 +22,8 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
-                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }, new { @class = "table_buttons" }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID }, new { @class = "table_buttons" })
             </td>
         </tr>
     }

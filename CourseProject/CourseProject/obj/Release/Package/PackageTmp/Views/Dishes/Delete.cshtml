@@ -10,39 +10,48 @@
 <h3>Вы уверены, что хотите удалить это блюдо?</h3>
 <div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.Display("Имя:")
-        </dt>
+    <table class="details_tbl">
+        <tr>
+            <td>
+                <img src="@Model.ImageName" />
+            </td>
+            <td>
+                <dl class="details_style">
+                    <dt>
+                        @Html.DisplayName("Имя")
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.Display("Цена:")
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayName("Цена")
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cost)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Cost)
+                    </dd>
 
-        <dt>
-            @Html.Display("Тип:")
-        </dt>
+                    <dt>
+                        @Html.DisplayName("Тип")
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DishesType.Type)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.DishesType.Type)
+                    </dd>
 
-    </dl>
+                </dl>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Да, удалить" class="btn btn-default" />
+                        @Html.ActionLink("Нет, вернуться назад", "Index", "Dishes", htmlAttributes: new { @class = "btn btn-default" })
+                    </div>
+                }
+            </td>
+        </tr>
+    </table>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Да, удалить" class="btn btn-default" />
-            @Html.ActionLink("Нет, вернуться назад", "Index", "Dishes", htmlAttributes: new { @class = "btn btn-default" })
-        </div>
-    }
 </div>

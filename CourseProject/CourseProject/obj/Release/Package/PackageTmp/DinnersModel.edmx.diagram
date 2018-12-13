@@ -4,16 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5772f95676d44abd8977a0030c58eadd" Name="Diagram1">
-        <EntityTypeShape EntityType="DinnersDBModel.Dish" Width="1.5" PointX="8" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DinnersDBModel.DishesType" Width="1.5" PointX="5.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DinnersDBModel.Ingredient" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DinnersDBModel.IngredientsCategory" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DinnersDBModel.IngredientsOnPosition" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DinnersDBModel.Position" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DinnersDBModel.PositionsInDish" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DinnersDBModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="5dbccfa243724018bbe9556fb03def0d" Name="Diagram1">
+        <EntityTypeShape EntityType="DinnersDBModel.Dish" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DinnersDBModel.DishesType" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DinnersDBModel.Ingredient" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DinnersDBModel.IngredientsCategory" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DinnersDBModel.IngredientsOnPosition" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DinnersDBModel.Position" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DinnersDBModel.PositionsInDish" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DinnersDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="DinnersDBModel.FK_Dishes_DishesTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DinnersDBModel.FK_PositionsInDish_Dishes" ManuallyRouted="false" />
         <AssociationConnector Association="DinnersDBModel.FK_Categories_Ingredients" ManuallyRouted="false" />
         <AssociationConnector Association="DinnersDBModel.FK_IngredientsOnPositions_Ingredients" ManuallyRouted="false" />
         <AssociationConnector Association="DinnersDBModel.FK_IngredientsOnPositions_PositionsInDish" ManuallyRouted="false" />

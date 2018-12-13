@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using CourseProject;
 using System.IO;
+using System.Data.Entity.Infrastructure;
 
 namespace CourseProject.Controllers
 {
@@ -31,10 +32,18 @@ namespace CourseProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Dish dishes = db.Dishes.Find(id);
-            PositionsInDish positionsInDish = db.PositionsInDishes.Where(p => p.DishID == id).First();
-            IngredientsOnPosition ingredientsOnPosition = db.IngredientsOnPositions.Where(p => p.PositionInDishID == positionsInDish.ID).First();
-            ViewData["Position"] = db.Positions.Where(pos => pos.ID == positionsInDish.PositionID).First().Name;
-            ViewData["Ingredient"] = db.Ingredients.Where(ing => ing.ID == ingredientsOnPosition.IngredientID).First().Name;
+            List<string> positions = new List<string>();
+            List<string> ingredients = new List<string>();
+            foreach (var pos in db.PositionsInDishes.Where(p => p.DishID == id).ToList())
+            {
+                positions.Add(db.Positions.Where(p => p.ID == pos.PositionID).First().Name);
+                int ingrID = db.IngredientsOnPositions.Where(p => p.PositionInDishID == pos.ID).First().IngredientID;
+                ingredients.Add(db.Ingredients.Where(i => i.ID == ingrID).First().Name);
+            }
+
+            ViewData["Position"] = new SelectList(positions);
+            ViewData["Ingredient"] = new SelectList(ingredients);
+
             if (dishes == null)
             {
                 return HttpNotFound();
@@ -63,31 +72,75 @@ namespace CourseProject.Controllers
             ViewData["Positions"] = new SelectList(db.Positions, "ID", "Name");
             ViewData["Ingredients"] = new SelectList(db.Ingredients, "ID", "Name");
 
-            IngredientsOnPosition ingredientsOnPosition = new IngredientsOnPosition();
-            PositionsInDish positionsInDish = new PositionsInDish();
-
             if (ModelState.IsValid && file != null && file.ContentLength > 0)
             {
-                positionsInDish.DishID = GetID();
-                positionsInDish.PositionID = Convert.ToInt32(Request.Form["Positions"].ElementAt(0).ToString());
-                db.PositionsInDishes.Add(positionsInDish);
+                List<int> pos_list = new List<int>();
+                string pos_str = "";
+                foreach (var pos in Request.Form["Positions"].ToList())
+                {
+                    pos_str += pos;
+                }
+                string[] pos_arr = pos_str.Split(',');
+                foreach (var str in pos_arr)
+                {
+                    pos_list.Add(Convert.ToInt32(str));
+                }
 
-                ingredientsOnPosition.PositionInDishID = positionsInDish.ID;
-                ingredientsOnPosition.IngredientID = Convert.ToInt32(Request.Form["Ingredients"].ElementAt(0).ToString());
-                db.IngredientsOnPositions.Add(ingredientsOnPosition);
 
-                double? wght = db.Ingredients.Find(ingredientsOnPosition.IngredientID).Weight;
-                dishes.Weight = wght;
+                List<int> ingr_list = new List<int>();
+                string ingr_str = "";
+                foreach (var ingr in Request.Form["Ingredients"].ToList())
+                {
+                    ingr_str += ingr;
+                }
+                string[] ingr_arr = ingr_str.Split(',');
+                foreach (var str in ingr_arr)
+                {
+                    ingr_list.Add(Convert.ToInt32(str));
+                }
 
-
+                foreach (var ingr in ingr_list)
+                {
+                    double? wght = db.Ingredients.Where(i => i.ID == ingr).First().Weight;
+                    if (dishes.Weight == null)
+                    {
+                        dishes.Weight = wght;
+                    }
+                    else
+                    {
+                        dishes.Weight += wght;
+                    }
+                }
                 // extract only the fielname
                 var fileName = Path.GetFileName(file.FileName);
                 // store the file inside ~/App_Data/uploads folder
                 var path = Path.Combine(Server.MapPath("~/Images"), fileName);
                 file.SaveAs(path);
-
                 dishes.ImageName = "/Images/" + fileName;
                 db.Dishes.Add(dishes);
+                db.SaveChanges();
+
+                for (int i = 0; i < pos_list.Count; i++)
+                {
+                    PositionsInDish positionsInDish = new PositionsInDish();
+                    IngredientsOnPosition ingredientsOnPosition = new IngredientsOnPosition();
+
+                    positionsInDish.DishID = GetID();
+                    positionsInDish.PositionID = pos_list[i];
+                    db.PositionsInDishes.Add(positionsInDish);
+                    db.SaveChanges();
+
+                    ingredientsOnPosition.PositionInDishID = positionsInDish.ID;
+                    ingredientsOnPosition.IngredientID = ingr_list[i];
+                    db.IngredientsOnPositions.Add(ingredientsOnPosition);
+                    db.SaveChanges();
+
+                    //double? wght = db.Ingredients.Find(ingredientsOnPosition.IngredientID).Weight;
+                    //dishes.Weight += wght;
+                    //db.Entry(dishes).State = EntityState.Modified;
+                    //db.SaveChanges();
+                }
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -105,10 +158,23 @@ namespace CourseProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Dish dishes = db.Dishes.Find(id);
+            List<string> positions = new List<string>();
+            List<int> ingredients = new List<int>();
+            foreach (var pos in db.PositionsInDishes.Where(p => p.DishID == id).ToList())
+            {
+                positions.Add(db.Positions.Where(p => p.ID == pos.PositionID).First().Name);
+                int ingrID = db.IngredientsOnPositions.Where(p => p.PositionInDishID == pos.ID).First().IngredientID;
+                ingredients.Add(ingrID);
+            }
+            ViewData["Position"] = new SelectList(positions);
+            ViewData["Ingredient"] = new SelectList(ingredients);
+            ViewData["Ingredients"] = new SelectList(db.Ingredients, "ID", "Name");
+
             if (dishes == null)
             {
                 return HttpNotFound();
             }
+
             ViewBag.Type = new SelectList(db.DishesTypes, "ID", "Type", dishes.Type);
             return View(dishes);
         }
@@ -119,30 +185,53 @@ namespace CourseProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "admin")]
-        public ActionResult Edit([Bind(Include = "ID,Name,Type,Cost")] Dish dishes, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "ID,Weight,Name,Type,Cost,ImageName")] Dish dishes, HttpPostedFileBase file)
         {
+            List<int> ingr_list = new List<int>();
+            string ingr_str = "";
+            foreach (var ingr in Request.Form["Ingredients"].ToList())
+            {
+                ingr_str += ingr;
+            }
+            string[] ingr_arr = ingr_str.Split(',');
+            foreach (var str in ingr_arr)
+            {
+                ingr_list.Add(Convert.ToInt32(str));
+            }
+            ingr_list.Remove(ingr_list.Last());
+
             if (ModelState.IsValid)
             {
                 if (file != null)
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Images"), fileName);
-                    file.SaveAs(path);
-
+                    string fileName = System.IO.Path.GetFileName(file.FileName);
+                    file.SaveAs(Server.MapPath("~/Images/" + fileName));
+                    db.Entry(dishes).State = EntityState.Modified;
                     dishes.ImageName = "/Images/" + fileName;
+                    db.SaveChanges();
                 }
                 else
                 {
-                    dishes.ImageName = dishes.ImageName;
+                    db.Entry(dishes).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
-                dishes.Weight = dishes.Weight;
-                db.Entry(dishes).State = EntityState.Modified;
-                db.SaveChanges();
+
+                int counter = 0;
+                foreach (var pos_id in db.PositionsInDishes.Where(p => p.DishID == dishes.ID).Select(p => p.ID).ToList())
+                {
+                    IngredientsOnPosition ingredientsOnPosition = db.IngredientsOnPositions.Where(i => i.PositionInDishID == pos_id).First();
+                    ingredientsOnPosition.IngredientID = ingr_list[counter];
+                    db.Entry(ingredientsOnPosition).State = EntityState.Modified;
+                    db.SaveChanges();
+                    counter++;
+                }
+
                 return RedirectToAction("Index");
             }
             ViewBag.Type = new SelectList(db.DishesTypes, "ID", "Type", dishes.Type);
             return View(dishes);
         }
+
 
         // GET: Dishes/Delete/5
         [Authorize(Roles = "admin")]
@@ -210,7 +299,7 @@ namespace CourseProject.Controllers
                     while (reader.Read()) // построчно считываем данные
                     {
                         object id = reader["CURR_ID"];
-                        dish_id = Convert.ToInt32(id) + 1;
+                        dish_id = Convert.ToInt32(id);
                     }
                 }
                 reader.Close();

@@ -4,6 +4,7 @@
     ViewBag.Title = "Подробнее";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/MyScript.js"></script>
 
 <h2 class="page_header">Подробнее о <span style="color: maroon; text-decoration: underline;">@Html.DisplayFor(model => model.Name)</span></h2>
 
@@ -13,37 +14,51 @@
         @Html.ActionLink("Назад", "Index")
     </p>
     <hr />
-    <dl class="details_style">
-        <dt>
-            @Html.DisplayName("Название")
-        </dt>
+    <table class="details_tbl">
+        <tr>
+            <td>
+                <img src="@Model.ImageName" />
+            </td>
+            <td>
+                <dl class="details_style" id="dtl">
+                    <dt>
+                        @Html.DisplayName("Название")
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
 
-        <dt>
-            @Html.DisplayName("Цена")
-        </dt>
+                    <dt>
+                        @Html.DisplayName("Цена")
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cost)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Cost)
+                    </dd>
 
-        <dt>
-            @Html.DisplayName("Название")
-        </dt>
+                    <dt>
+                        @Html.DisplayName("Тип")
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DishesType.Type)
-        </dd>
-        <dt>
-            @Html.DisplayName("Позиция|Ингредиент")
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DishesType.Type)
+                    </dd>
 
-        <dd>
-            @Html.Display("Position")|
-            @Html.Display("Ingredient")
-        </dd>
-    </dl>
+                    <dt>
+                        @Html.DisplayName("Вес")
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Weight)
+                    </dd>
+                </dl>
+                <input id="more" type="button" onclick="details()" value="Ещё..." class="btn btn-default" />
+            </td>
+        </tr>
+    </table>
 </div>
+<p hidden="hidden">
+    @Html.DropDownList("Position", null, htmlAttributes: new { @class = "form-control", id = "pos_list" })
+    @Html.DropDownList("Ingredient", null, htmlAttributes: new { @class = "form-control", id = "ingr_list" })
+</p>

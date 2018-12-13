@@ -9,6 +9,7 @@
     <Property Name="Type" Type="int" Nullable="false" />
     <Property Name="Weight" Type="float" />
     <Property Name="Cost" Type="float" />
+    <Property Name="ImageName" Type="nchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="DishesTypes">
     <Key>
@@ -115,6 +116,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PositionsInDish_Dishes">
+    <End Role="Dishes" Type="Self.Dishes" Multiplicity="1" />
+    <End Role="PositionsInDish" Type="Self.PositionsInDish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dishes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PositionsInDish">
+        <PropertyRef Name="DishID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PositionsInDish_Positions">
     <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
     <End Role="PositionsInDish" Type="Self.PositionsInDish" Multiplicity="*" />
@@ -151,6 +164,10 @@
     <AssociationSet Name="FK_IngredientsOnPositions_PositionsInDish" Association="Self.FK_IngredientsOnPositions_PositionsInDish">
       <End Role="PositionsInDish" EntitySet="PositionsInDish" />
       <End Role="IngredientsOnPositions" EntitySet="IngredientsOnPositions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PositionsInDish_Dishes" Association="Self.FK_PositionsInDish_Dishes">
+      <End Role="Dishes" EntitySet="Dishes" />
+      <End Role="PositionsInDish" EntitySet="PositionsInDish" />
     </AssociationSet>
     <AssociationSet Name="FK_PositionsInDish_Positions" Association="Self.FK_PositionsInDish_Positions">
       <End Role="Positions" EntitySet="Positions" />

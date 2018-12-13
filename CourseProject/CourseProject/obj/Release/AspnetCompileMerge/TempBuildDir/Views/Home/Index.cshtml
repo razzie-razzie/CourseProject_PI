@@ -50,4 +50,10 @@
                 </td>
             </tr>
         </table>
+        <div class="home_pos_lbl" align="center">Позиции в блюде</div>
+        <div align="center">
+            @Html.ActionLink("Список позиций", "Index", "Positions", null, new { @class = "button_start_page" })
+            &nbsp;
+            @Html.ActionLink("Добавить позицию", "Create", "Positions", null, new { @class = "button_start_page" })
+        </div>
 </div>

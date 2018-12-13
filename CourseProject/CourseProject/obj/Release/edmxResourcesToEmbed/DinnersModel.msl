@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище DinnersDBModelContainer" CdmEntityContainer="DinnersDBEntities1">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DinnersDBModelContainer" CdmEntityContainer="DinnersDBEntities2">
     <EntitySetMapping Name="Dishes">
       <EntityTypeMapping TypeName="DinnersDBModel.Dish">
         <MappingFragment StoreEntitySet="Dishes">
@@ -9,6 +9,7 @@
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Weight" ColumnName="Weight" />
           <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

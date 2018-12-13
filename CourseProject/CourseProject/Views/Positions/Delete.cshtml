@@ -1,0 +1,33 @@
+﻿@model CourseProject.Position
+
+@{
+    ViewBag.Title = "Удаление позиции блюда";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page_header">Удаление типа блюда</h2>
+
+<h3>Вы уверены, что хотите удалить этот тип?</h3>
+<div>
+    <hr />
+    <dl class="details_style">
+        <dt>
+            @Html.DisplayName("Позиция блюда")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Да, удалить" class="btn btn-default" />
+            @Html.ActionLink("Нет, вернуться назад", "Index", "Positions", htmlAttributes: new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

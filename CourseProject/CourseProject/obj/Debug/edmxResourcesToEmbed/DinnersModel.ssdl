@@ -9,7 +9,7 @@
     <Property Name="Type" Type="int" Nullable="false" />
     <Property Name="Weight" Type="float" />
     <Property Name="Cost" Type="float" />
-    <Property Name="ImageName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="ImageName" Type="nchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="DishesTypes">
     <Key>

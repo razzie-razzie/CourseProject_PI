@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script src="~/Scripts/MyScript.js"></script>
 <h2 class="page_header">Редактирование <span style="color: maroon; text-decoration: underline;">@Html.DisplayFor(model => model.Name)</span></h2>
-
 
 @using (Html.BeginForm("Edit", "Dishes", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -22,9 +22,10 @@
                 <td>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.HiddenFor(model => model.ID)
-                    <dl class="details_style">
+                    @Html.HiddenFor(model => model.Weight)
+                    <dl class="details_style" id="dtl">
                         <dt>
-                            @Html.Label("Название:", htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.Label("Название", htmlAttributes: new { @class = "control-label col-md-2" })
                         </dt>
                         <dd>
                             @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
@@ -38,21 +39,25 @@
                             @Html.DropDownList("Type", null, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
                         </dd>
+
                         <dt>
-                            @Html.Label("Цена:", htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.Label("Цена", htmlAttributes: new { @class = "control-label col-md-2" })
                         </dt>
                         <dd>
                             @Html.EditorFor(model => model.Cost, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Cost, "", new { @class = "text-danger" })
                         </dd>
                         <dt>
-                            @Html.Label("Фото:", htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.Label("Фото", htmlAttributes: new { @class = "control-label col-md-2" })
                         </dt>
                         <dd>
                             <input type="file" name="file" />
-                            @Html.ValidationMessageFor(model => model.ImageName, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.ImageName, new { htmlAttributes = new { @class = "form-control" } })
                         </dd>
+
                     </dl>
+                    <input id="more" type="button" onclick="details('Edit')" value="Ещё..." class="btn btn-default" />
+
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Сохранить изменения" class="btn btn-default" />
@@ -61,12 +66,19 @@
                 </td>
             </tr>
         </table>
+        <p hidden="hidden">
+            @Html.DropDownList("Position", null, htmlAttributes: new { @class = "form-control", id = "pos_list" })
+            @Html.DropDownList("Ingredient", null, htmlAttributes: new { @class = "form-control", id = "ingr_list" })
+            @Html.DropDownList("Ingredients", null, htmlAttributes: new { @class = "form-control", id = "ingrs_list" })
+        </p>
     </div>
 }
 
 <div>
     @Html.ActionLink("Вернуться к списку блюд", "Index")
 </div>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

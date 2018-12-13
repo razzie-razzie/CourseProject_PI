@@ -22,16 +22,16 @@
       <publishTime>11/07/2018 13:56:32</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>12/06/2018 14:51:23</publishTime>
+      <publishTime>12/13/2018 13:12:52</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>12/06/2018 14:51:23</publishTime>
+      <publishTime>12/13/2018 13:12:52</publishTime>
     </File>
     <File Include="bin/CourseProject.dll">
-      <publishTime>12/06/2018 14:50:51</publishTime>
+      <publishTime>12/13/2018 13:12:26</publishTime>
     </File>
     <File Include="bin/CourseProject.pdb">
-      <publishTime>12/06/2018 14:50:51</publishTime>
+      <publishTime>12/13/2018 13:12:26</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>10/23/2017 13:15:18</publishTime>
@@ -325,7 +325,7 @@
       <publishTime>11/07/2018 13:55:55</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>12/05/2018 15:18:46</publishTime>
+      <publishTime>12/09/2018 22:54:18</publishTime>
     </File>
     <File Include="Content/bootstrap.css.map">
       <publishTime>11/26/2018 17:53:54</publishTime>
@@ -337,10 +337,10 @@
       <publishTime>11/07/2018 13:55:55</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>12/04/2018 18:47:11</publishTime>
+      <publishTime>12/13/2018 00:24:51</publishTime>
     </File>
     <File Include="DinnersModel.edmx.diagram">
-      <publishTime>12/05/2018 18:00:45</publishTime>
+      <publishTime>12/13/2018 01:36:27</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>12/03/2018 15:32:17</publishTime>
@@ -361,10 +361,10 @@
       <publishTime>11/07/2018 13:55:54</publishTime>
     </File>
     <File Include="Images/background-1.jpg">
-      <publishTime>11/26/2018 13:00:25</publishTime>
+      <publishTime>12/09/2018 15:47:27</publishTime>
     </File>
     <File Include="Images/background-2.jpg">
-      <publishTime>11/26/2018 13:00:42</publishTime>
+      <publishTime>12/09/2018 16:47:50</publishTime>
     </File>
     <File Include="Images/background.jpg">
       <publishTime>11/25/2018 00:31:57</publishTime>
@@ -373,7 +373,7 @@
       <publishTime>11/26/2018 16:42:32</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/06/2018 14:50:56</publishTime>
+      <publishTime>12/13/2018 13:12:32</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>11/07/2018 13:55:54</publishTime>
@@ -414,6 +414,9 @@
     <File Include="Scripts/modernizr-2.8.3.js">
       <publishTime>11/07/2018 13:56:10</publishTime>
     </File>
+    <File Include="Scripts/MyScript.js">
+      <publishTime>12/13/2018 12:55:27</publishTime>
+    </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>11/07/2018 13:56:17</publishTime>
     </File>
@@ -430,7 +433,7 @@
       <publishTime>11/07/2018 13:56:17</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>11/07/2018 13:56:18</publishTime>
+      <publishTime>12/07/2018 12:38:50</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>11/07/2018 13:56:18</publishTime>
@@ -451,46 +454,46 @@
       <publishTime>11/07/2018 13:56:17</publishTime>
     </File>
     <File Include="Views/Dishes/Create.cshtml">
-      <publishTime>12/06/2018 08:48:17</publishTime>
+      <publishTime>12/12/2018 15:36:43</publishTime>
     </File>
     <File Include="Views/Dishes/Delete.cshtml">
-      <publishTime>12/06/2018 08:48:17</publishTime>
+      <publishTime>12/12/2018 23:49:05</publishTime>
     </File>
     <File Include="Views/Dishes/Details.cshtml">
-      <publishTime>12/06/2018 01:13:39</publishTime>
+      <publishTime>12/13/2018 12:16:46</publishTime>
     </File>
     <File Include="Views/Dishes/Edit.cshtml">
-      <publishTime>12/06/2018 08:48:29</publishTime>
+      <publishTime>12/13/2018 10:58:00</publishTime>
     </File>
     <File Include="Views/Dishes/Index.cshtml">
-      <publishTime>12/06/2018 08:50:20</publishTime>
+      <publishTime>12/09/2018 17:39:04</publishTime>
     </File>
     <File Include="Views/DishesTypes/Create.cshtml">
       <publishTime>12/04/2018 16:32:07</publishTime>
     </File>
     <File Include="Views/DishesTypes/Delete.cshtml">
-      <publishTime>12/04/2018 16:32:13</publishTime>
+      <publishTime>12/13/2018 00:29:39</publishTime>
     </File>
     <File Include="Views/DishesTypes/Edit.cshtml">
       <publishTime>12/04/2018 16:32:21</publishTime>
     </File>
     <File Include="Views/DishesTypes/Index.cshtml">
-      <publishTime>12/04/2018 15:59:03</publishTime>
+      <publishTime>12/09/2018 17:39:34</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>12/04/2018 17:19:17</publishTime>
+      <publishTime>12/12/2018 23:57:49</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
-      <publishTime>12/04/2018 17:19:35</publishTime>
+      <publishTime>12/12/2018 23:57:30</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/04/2018 18:35:18</publishTime>
+      <publishTime>12/13/2018 00:25:03</publishTime>
     </File>
     <File Include="Views/Ingredients/Create.cshtml">
-      <publishTime>12/04/2018 16:34:20</publishTime>
+      <publishTime>12/09/2018 18:28:59</publishTime>
     </File>
     <File Include="Views/Ingredients/Delete.cshtml">
-      <publishTime>12/04/2018 16:35:08</publishTime>
+      <publishTime>12/12/2018 23:49:54</publishTime>
     </File>
     <File Include="Views/Ingredients/Details.cshtml">
       <publishTime>12/06/2018 08:49:30</publishTime>
@@ -499,19 +502,19 @@
       <publishTime>12/04/2018 15:35:45</publishTime>
     </File>
     <File Include="Views/Ingredients/Index.cshtml">
-      <publishTime>12/04/2018 17:01:44</publishTime>
+      <publishTime>12/09/2018 17:42:28</publishTime>
     </File>
     <File Include="Views/IngredientsCategories/Create.cshtml">
-      <publishTime>12/04/2018 16:35:25</publishTime>
+      <publishTime>12/09/2018 18:03:53</publishTime>
     </File>
     <File Include="Views/IngredientsCategories/Delete.cshtml">
-      <publishTime>12/04/2018 16:35:30</publishTime>
+      <publishTime>12/09/2018 18:24:28</publishTime>
     </File>
     <File Include="Views/IngredientsCategories/Edit.cshtml">
       <publishTime>12/04/2018 16:35:36</publishTime>
     </File>
     <File Include="Views/IngredientsCategories/Index.cshtml">
-      <publishTime>12/04/2018 16:00:37</publishTime>
+      <publishTime>12/09/2018 17:42:37</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>11/07/2018 13:56:18</publishTime>
@@ -531,6 +534,18 @@
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>11/07/2018 13:56:18</publishTime>
     </File>
+    <File Include="Views/Positions/Create.cshtml">
+      <publishTime>12/13/2018 00:27:26</publishTime>
+    </File>
+    <File Include="Views/Positions/Delete.cshtml">
+      <publishTime>12/13/2018 00:31:40</publishTime>
+    </File>
+    <File Include="Views/Positions/Edit.cshtml">
+      <publishTime>12/13/2018 00:33:16</publishTime>
+    </File>
+    <File Include="Views/Positions/Index.cshtml">
+      <publishTime>12/13/2018 00:37:37</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/07/2018 13:56:17</publishTime>
     </File>
@@ -538,7 +553,7 @@
       <publishTime>11/07/2018 13:56:18</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/05/2018 13:47:53</publishTime>
+      <publishTime>12/12/2018 23:54:53</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>11/07/2018 13:56:18</publishTime>
@@ -550,7 +565,7 @@
       <publishTime>11/07/2018 13:55:25</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/06/2018 14:39:16</publishTime>
+      <publishTime>12/13/2018 13:12:28</publishTime>
     </File>
   </ItemGroup>
 </Project>

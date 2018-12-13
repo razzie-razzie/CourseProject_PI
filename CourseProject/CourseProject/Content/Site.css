@@ -181,3 +181,11 @@ textarea {
     .details_tbl td {
         padding: 10px;
     }
+
+.home_pos_lbl {
+    font-size: 35px;
+    letter-spacing: 1px;
+    font-weight: 900;
+    color: #162e02;
+    text-shadow: 5px 5px 2px #b5b4b4;
+}

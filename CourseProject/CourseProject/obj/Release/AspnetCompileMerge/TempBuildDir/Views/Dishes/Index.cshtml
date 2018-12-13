@@ -10,6 +10,9 @@
 <table class="my_table">
     <tr class=".my_table .header-line">
         <th>
+            @Html.DisplayName("Фото")
+        </th>
+        <th>
             @Html.DisplayName("Название")
         </th>
         <th>
@@ -21,30 +24,32 @@
         <th>
             @Html.DisplayName("Цена, р")
         </th>
-
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td align="center">
+                <img src="@item.ImageName" class="dish_img" />
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DishesType.Type)
             </td>
-            <td>
+            <td class="number">
                 @Html.DisplayFor(modelItem => item.Weight)
             </td>
-            <td>
+            <td class="number">
                 @Html.DisplayFor(modelItem => item.Cost)
             </td>
 
             <td>
-                @Html.ActionLink("Просмотреть", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+                @Html.ActionLink("Просмотреть", "Details", new { id = item.ID }, new { @class = "table_buttons" }) |
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID }, new { @class = "table_buttons" }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID }, new { @class = "table_buttons" } )
             </td>
         </tr>
     }

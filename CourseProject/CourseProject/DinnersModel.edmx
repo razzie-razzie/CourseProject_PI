@@ -14,7 +14,7 @@
           <Property Name="Type" Type="int" Nullable="false" />
           <Property Name="Weight" Type="float" />
           <Property Name="Cost" Type="float" />
-          <Property Name="ImageName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="ImageName" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="DishesTypes">
           <Key>
@@ -193,7 +193,7 @@
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="Weight" Type="Double" />
           <Property Name="Cost" Type="Double" />
-          <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="DishesType" Relationship="Self.FK_Dishes_DishesTypes" FromRole="Dishes" ToRole="DishesTypes" />
           <NavigationProperty Name="PositionsInDishes" Relationship="Self.FK_PositionsInDish_Dishes" FromRole="Dishes" ToRole="PositionsInDish" />
         </EntityType>
